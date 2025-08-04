@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .charts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .chart-box {
+      flex: 1 1 45%;
+      background: #f9fafc;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .green {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .red {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Product Analytics Dashboard</h1>
+    <div class="charts">
+      <div class="chart-box">
+        <h3>Top Selling Products</h3>
+        <canvas id="topSellingChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <h3>Revenue Over Time</h3>
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 50px;">Product Sales Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Sold Units</th>
+          <th>Revenue</th>
+          <th>Stock Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Whey Protein</td>
+          <td>150</td>
+          <td>₹45,000</td>
+          <td><span class="badge green">In Stock</span></td>
+        </tr>
+        <tr>
+          <td>Creatine</td>
+          <td>120</td>
+          <td>₹30,000</td>
+          <td><span class="badge green">In Stock</span></td>
+        </tr>
+        <tr>
+          <td>BCAA</td>
+          <td>80</td>
+          <td>₹24,000</td>
+          <td><span class="badge red">Low Stock</span></td>
+        </tr>
+        <tr>
+          <td>Multivitamins</td>
+          <td>60</td>
+          <td>₹15,000</td>
+          <td><span class="badge green">In Stock</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Top Selling Chart
+    const ctx1 = document.getElementById('topSellingChart').getContext('2d');
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ['Whey Protein', 'Creatine', 'BCAA', 'Multivitamins'],
+        datasets: [{
+          label: 'Units Sold',
+          data: [150, 120, 80, 60],
+          backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e'],
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Revenue Chart
+    const ctx2 = document.getElementById('revenueChart').getContext('2d');
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Revenue (in ₹)',
+          data: [20000, 30000, 25000, 40000, 45000, 38000],
+          fill: false,
+          borderColor: '#4e73df',
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true
+      }
+    });
+  </script>
+</body>
+</html>

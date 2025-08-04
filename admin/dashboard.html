@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8fafc;
+      color: #1f2937;
+    }
+
+    header {
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      color: white;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .dashboard-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .card button {
+      padding: 0.6rem 1.2rem;
+      background-color: #2563eb;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .card button:hover {
+      background-color: #1e40af;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Admin Dashboard
+  </header>
+
+  <main class="dashboard-container">
+    <div class="card">
+      <h2>Add Product</h2>
+      <button onclick="location.href='addProduct.html'">Go</button>
+    </div>
+
+    <div class="card">
+      <h2>Analytics UI</h2>
+      <button onclick="location.href='analytics.html'">View</button>
+    </div>
+
+    <div class="card">
+      <h2>Order List</h2>
+      <button onclick="location.href='order.html'">View</button>
+    </div>
+
+    <div class="card">
+      <h2>Shipping Status</h2>
+      <button onclick="location.href='shipping.html'">Update</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Supplement Admin Panel
+  </footer>
+
+</body>
+</html>

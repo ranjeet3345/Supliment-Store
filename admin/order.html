@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orders List - Admin Panel</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+    }
+
+    header {
+      background-color: #2f3542;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .order-table thead {
+      background-color: #1e90ff;
+      color: white;
+    }
+
+    .order-table th,
+    .order-table td {
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .order-table tr:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+
+    .badge {
+      padding: 5px 10px;
+      border-radius: 12px;
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    .pending {
+      background-color: orange;
+    }
+
+    .shipped {
+      background-color: green;
+    }
+
+    .cancelled {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Orders List</h1>
+    <nav>
+      <a href="dashboard.html" style="color:white; text-decoration:none;">⬅ Back to Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th># Order ID</th>
+          <th>Customer</th>
+          <th>Product</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="orders">
+        <!-- Dummy data inserted by JS -->
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    const orders = [
+      { id: 'ORD001', customer: 'John Doe', product: 'Whey Protein', total: '₹1999', status: 'Pending', date: '2025-08-01' },
+      { id: 'ORD002', customer: 'Alice Singh', product: 'Multivitamin', total: '₹999', status: 'Shipped', date: '2025-08-01' },
+      { id: 'ORD003', customer: 'Rahul Sharma', product: 'Omega-3', total: '₹749', status: 'Cancelled', date: '2025-07-30' },
+      { id: 'ORD004', customer: 'Priya Verma', product: 'Creatine', total: '₹849', status: 'Pending', date: '2025-07-29' },
+      { id: 'ORD005', customer: 'Amit Raj', product: 'Fat Burner', total: '₹1199', status: 'Shipped', date: '2025-07-28' },
+    ];
+
+    const tbody = document.getElementById('orders');
+
+    orders.forEach(order => {
+      const tr = document.createElement('tr');
+
+      const statusClass = {
+        'Pending': 'pending',
+        'Shipped': 'shipped',
+        'Cancelled': 'cancelled'
+      }[order.status];
+
+      tr.innerHTML = `
+        <td>${order.id}</td>
+        <td>${order.customer}</td>
+        <td>${order.product}</td>
+        <td>${order.total}</td>
+        <td><span class="badge ${statusClass}">${order.status}</span></td>
+        <td>${order.date}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  </script>
+</body>
+</html>

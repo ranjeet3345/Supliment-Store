@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Products - Supplement Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #2d2d2d;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+    h1 {
+      text-align: center;
+      padding: 30px 0 10px;
+    }
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px 40px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .add-cart-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .add-cart-btn:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2> 💪 Store</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Product.html">Products</a>
+      <a href="Cart.html">Cart</a>
+    </nav>
+  </header>
+
+  <h1>Our Products</h1>
+  <div class="product-container" id="product-list">
+    <!-- Products will be inserted here by JS -->
+  </div>
+
+  <script>
+    const products = [
+      {
+        name: "Whey Protein",
+        desc: "Premium protein for muscle recovery.",
+        image: "whey.jpg"
+      },
+      {
+        name: "Multivitamins",
+        desc: "Daily essential vitamins for immunity.",
+        image: "Multiviatamin.jpeg"
+      },
+      {
+        name: "Omega-3",
+        desc: "Supports heart and brain function.",
+        image: "omega3.jpeg"
+      },
+      {
+        name: "Creatine",
+        desc: "Boost strength and performance.",
+        image: "creatine.jpeg"
+      },
+      {
+        name: "Fat Burner",
+        desc: "Helps reduce body fat faster.",
+        image: "fatBurner.jpeg"
+      },
+      {
+        name: "BCAA",
+        desc: "Enhances muscle recovery and energy.",
+        image: "BCAA.jpeg"
+      },
+      {
+        name: "Zinc Tablets",
+        desc: "Boosts immunity and healing.",
+        image: "zinc.jpeg"
+      },
+      {
+        name: "Mass Gainer",
+        desc: "For effective bulking and weight gain.",
+        image: "mass.jpeg"
+      },
+      {
+        name: "Vitamin D3",
+        desc: "Supports bone and immune health.",
+        image: "d3.jpeg"
+      },
+      {
+        name: "Pre-Workout",
+        desc: "Energy boost before workouts.",
+        image: "preworkout.jpeg"
+      }
+    ];
+
+    const container = document.getElementById("product-list");
+    products.forEach((p) => {
+      container.innerHTML += `
+        <div class="product-card">
+          <img src="${p.image}" alt="${p.name}">
+          <div class="product-title">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+          <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

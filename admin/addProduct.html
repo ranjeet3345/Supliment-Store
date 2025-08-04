@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product - Admin Dashboard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f8fa;
+    }
+
+    header {
+      background-color: #0b1120;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+
+    form label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-actions {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .form-actions button {
+      background: #1f2937;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-actions button:hover {
+      background: #111827;
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard - Add Product</h1>
+  </header>
+
+  <div class="container">
+    <h2>Add New Product</h2>
+    <form id="productForm">
+      <label for="name">Product Name</label>
+      <input type="text" id="name" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" required></textarea>
+
+      <label for="price">Price</label>
+      <input type="number" id="price" required />
+
+      <label for="image">Image URL</label>
+      <input type="url" id="image" required />
+
+      <div class="form-actions">
+        <button type="submit">Add Product</button>
+      </div>
+      <div class="message" id="messageBox"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('productForm');
+    const messageBox = document.getElementById('messageBox');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const description = document.getElementById('description').value.trim();
+      const price = document.getElementById('price').value.trim();
+      const image = document.getElementById('image').value.trim();
+
+      if (name && description && price && image) {
+        console.log("Product added:", {
+          name,
+          description,
+          price,
+          image
+        });
+
+        messageBox.textContent = "✅ Product added successfully (dummy only).";
+        form.reset();
+      } else {
+        messageBox.textContent = "❌ Please fill all fields.";
+      }
+    });
+  </script>
+</body>
+</html>
